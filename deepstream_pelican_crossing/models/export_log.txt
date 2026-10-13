@@ -1,0 +1,9 @@
+
+Starting: yolo26n.pt
+Opening YOLO26 model
+YOLO26n summary (fused): 122 layers, 2,408,932 parameters, 0 gradients, 5.5 GFLOPs
+Creating labels.txt file
+Exporting the model to ONNX
+Simplifying the ONNX model
+Done: yolo26n.onnx
+

@@ -10,3 +10,8 @@ kamera.env
 Untitled-*.py
 *.save
 *.pyes
+*.db
+*.sqlite
+*.sqlite3
+logs/
+*.csv

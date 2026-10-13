@@ -1,0 +1,23 @@
+# Template service systemd — autostart saat boot & restart bila crash.
+# Pemasangan (lihat README bagian 9):
+#   sed -e "s|__USER__|$USER|" -e "s|__DIR__|$PWD|" pelican-crossing.service | sudo tee /etc/systemd/system/pelican-crossing.service
+#   sudo systemctl daemon-reload && sudo systemctl enable --now pelican-crossing
+[Unit]
+Description=Deteksi pelanggaran Pelican Crossing (DeepStream + YOLO26n + PLC)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=__USER__
+WorkingDirectory=__DIR__
+Environment=HEADLESS=1
+# Contoh pengaturan PLC (hapus tanda # bila perlu):
+#Environment=PLC_REG_STATE=0
+#Environment=PLC_REG_PBCOUNTER=1
+ExecStart=__DIR__/run.sh
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target

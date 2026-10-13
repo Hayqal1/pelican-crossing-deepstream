@@ -1,0 +1,59 @@
+################################################################################
+# nvdsanalytics — Pelican Crossing
+#
+# Koordinat dalam resolusi config-width x config-height = 720x360
+# (HARUS sama dengan MUX_W x MUX_H di pelican_deepstream.py).
+#
+# Dua elemen per kamera (namanya dipakai di kode, JANGAN diganti):
+#   roi-ZEBRA              : poligon area zebra cross. Orang di dalamnya saat
+#                            lampu pejalan merah = PedestrianCrossingViolation
+#   line-crossing-STOPLINE : garis henti kendaraan. Kendaraan melintasinya saat
+#                            lampu kendaraan merah = TrafficViolation
+#
+# Format:
+#   roi-ZEBRA=x1;y1;x2;y2;x3;y3;x4;y4            (titik poligon, searah keliling)
+#   line-crossing-STOPLINE=dx1;dy1;dx2;dy2;lx1;ly1;lx2;ly2
+#       dx1;dy1 -> dx2;dy2 : arah datang kendaraan (memotong garis)
+#       lx1;ly1 -> lx2;ly2 : garis henti
+#
+# KOORDINAT DI BAWAH ADALAH CONTOH. Ambil snapshot dengan
+#   bash scripts/snapshot_kamera.sh
+# lalu sesuaikan (lihat README bagian 5).
+################################################################################
+
+[property]
+enable=1
+config-width=720
+config-height=360
+# 2 = gambar zona, garis, dan label di tampilan
+osd-mode=2
+display-font-size=10
+
+# ---------------- KAMERA 1 (stream-0) ----------------
+[roi-filtering-stream-0]
+enable=1
+roi-ZEBRA=140;190;580;190;620;270;100;270
+inverse-roi=0
+class-id=-1
+
+[line-crossing-stream-0]
+enable=1
+# kendaraan datang dari atas ke bawah, garis henti di y=170
+line-crossing-STOPLINE=360;110;360;200;80;170;640;170
+class-id=-1
+extended=0
+mode=balanced
+
+# ---------------- KAMERA 2 (stream-1) ----------------
+[roi-filtering-stream-1]
+enable=1
+roi-ZEBRA=140;190;580;190;620;270;100;270
+inverse-roi=0
+class-id=-1
+
+[line-crossing-stream-1]
+enable=1
+line-crossing-STOPLINE=360;110;360;200;80;170;640;170
+class-id=-1
+extended=0
+mode=balanced
