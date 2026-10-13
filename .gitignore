@@ -7,3 +7,6 @@ __pycache__/
 *_backup.py
 *_sebelum_garis.py
 kamera.env
+Untitled-*.py
+*.save
+*.pyes
