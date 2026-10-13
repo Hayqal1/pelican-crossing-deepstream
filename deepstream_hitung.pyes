@@ -1,0 +1,3 @@
+	deepstream_hitung.py
+ls -l deepstream_hitung.py
+python3 -m py_compile deepstream_hitung.py

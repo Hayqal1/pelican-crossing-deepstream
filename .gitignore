@@ -1,0 +1,9 @@
+*.engine
+*.so
+*.o
+*.pt
+__pycache__/
+*_lama.py
+*_backup.py
+*_sebelum_garis.py
+kamera.env
